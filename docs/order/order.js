@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const successOverlay = document.getElementById("successOverlay");
   const successDetail = document.getElementById("successDetail");
 
-  const EMAILJS_PUBLIC_KEY = "YOUR_EMAILJS_PUBLIC_KEY";
+  const EMAILJS_PUBLIC_KEY = "vaKSM9weRLDJcMVac";
   const EMAILJS_SERVICE_ID = "service_e3thr3k";
-  const EMAILJS_TEMPLATE_ID = "YOUR_EMAILJS_TEMPLATE_ID";
+  const EMAILJS_TEMPLATE_ID = "template_nf80lkp";
 
   function loadEmailJs() {
     return new Promise((resolve, reject) => {
