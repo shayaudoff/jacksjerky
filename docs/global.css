@@ -161,6 +161,23 @@ footer p {
   margin-top: 0.5rem;
 }
 
+.footer-credit {
+  margin-top: 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+}
+
+.footer-credit a {
+  color: #79aefc;
+  border-bottom: 1px solid #79aefc;
+  padding-bottom: 0.08rem;
+}
+
+.footer-credit a:hover {
+  color: #aecdff;
+  border-bottom-color: #aecdff;
+}
+
 footer .footer-links {
   display: flex;
   justify-content: center;
