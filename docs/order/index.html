@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order — Jack's Jerky</title>
+  <link rel="stylesheet" href="../global.css" />
+  <link rel="stylesheet" href="order.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="../home/index.html" class="nav-logo">
+      <img src="../logo.png" alt="Jack's Jerky logo" />
+      <span>Jack's Jerky</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../home/index.html">Home</a></li>
+      <li><a href="../about/index.html">About</a></li>
+      <li><a href="../flavors/index.html">Flavors</a></li>
+      <li><a href="index.html" class="nav-cta active">Order Now</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <span class="section-label">Ready to get some</span>
+      <h1>Order The<br /><span>Original Jack's</span></h1>
+      <p class="header-sub">One flavor. One standard. Fill out what you need below and we'll handle the rest — fast.</p>
+    </div>
+  </header>
+
+  <!-- MAIN ORDER SECTION -->
+  <section class="section order-section">
+    <div class="container order-layout">
+
+      <!-- LEFT: PRODUCT + OPTIONS -->
+      <div class="order-left">
+
+        <!-- PRODUCT CARD -->
+        <div class="product-hero">
+          <div class="product-hero-badge">THE ORIGINAL</div>
+          <div class="product-hero-body">
+            <div class="product-hero-text">
+              <h2>The Original Jack's</h2>
+              <p class="product-tagline">Classic smokehouse beef jerky. No gimmicks, no fillers — just the flavor that started it all.</p>
+              <div class="product-tags">
+                <span>Smoky</span>
+                <span>Savory</span>
+                <span>Slow-Dried</span>
+                <span>Kosher Certified</span>
+              </div>
+            </div>
+            <div class="product-hero-price">
+              <span class="price-amount" id="priceDisplay">$14</span>
+              <span class="price-per">per bag</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUANTITY -->
+        <div class="option-block">
+          <div class="option-block-header">
+            <span class="option-title">Quantity</span>
+            <span class="option-subtitle">How many bags?</span>
+          </div>
+          <div class="qty-row">
+            <button class="qty-btn" id="qtyDec" type="button" aria-label="Decrease quantity">−</button>
+            <span class="qty-display" id="qtyDisplay">1</span>
+            <button class="qty-btn" id="qtyInc" type="button" aria-label="Increase quantity">+</button>
+            <span class="qty-label">bags</span>
+          </div>
+        </div>
+
+        <!-- BULK TIERS -->
+        <div class="option-block">
+          <div class="option-block-header">
+            <span class="option-title">Bulk Deals</span>
+            <span class="option-subtitle">The more you order, the better the deal</span>
+          </div>
+          <div class="bulk-tiers">
+            <div class="tier" data-qty="1">
+              <div class="tier-qty">1–4 bags</div>
+              <div class="tier-price">$14 / bag</div>
+              <div class="tier-label">Standard</div>
+            </div>
+            <div class="tier" data-qty="5">
+              <div class="tier-qty">5–9 bags</div>
+              <div class="tier-price">$12 / bag</div>
+              <div class="tier-label">Saver</div>
+            </div>
+            <div class="tier featured" data-qty="10">
+              <div class="tier-qty">10–19 bags</div>
+              <div class="tier-price">$10 / bag</div>
+              <div class="tier-label">🔥 Best Value</div>
+            </div>
+            <div class="tier" data-qty="20">
+              <div class="tier-qty">20+ bags</div>
+              <div class="tier-price">Ask us</div>
+              <div class="tier-label">Wholesale</div>
+            </div>
+          </div>
+          <p class="bulk-note">Clicking a tier auto-sets your quantity. You can still adjust above.</p>
+        </div>
+
+        <!-- ADD-ONS -->
+        <div class="option-block">
+          <div class="option-block-header">
+            <span class="option-title">Add-Ons</span>
+            <span class="option-subtitle">Optional extras to include with your order</span>
+          </div>
+          <div class="addon-list">
+            <label class="addon-item">
+              <input type="checkbox" class="addon-check" data-label="Gift Wrap" data-price="2" />
+              <div class="addon-info">
+                <span class="addon-name">Gift Wrap</span>
+                <span class="addon-desc">Nicely packaged — perfect for a gift or mishloach manos</span>
+              </div>
+              <span class="addon-price">+$2</span>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" class="addon-check" data-label="Custom Note Card" data-price="0" />
+              <div class="addon-info">
+                <span class="addon-name">Custom Note Card</span>
+                <span class="addon-desc">We'll handwrite a message — specify below in notes</span>
+              </div>
+              <span class="addon-price">Free</span>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" class="addon-check" data-label="Extra Seasoning Packet" data-price="1" />
+              <div class="addon-info">
+                <span class="addon-name">Extra Seasoning Packet</span>
+                <span class="addon-desc">A little more of the signature spice blend on the side</span>
+              </div>
+              <span class="addon-price">+$1</span>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" class="addon-check" data-label="Rush Processing" data-price="5" />
+              <div class="addon-info">
+                <span class="addon-name">Rush Processing</span>
+                <span class="addon-desc">Need it fast? We'll prioritize your order</span>
+              </div>
+              <span class="addon-price">+$5</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- DELIVERY PREFERENCE -->
+        <div class="option-block">
+          <div class="option-block-header">
+            <span class="option-title">Delivery Preference</span>
+            <span class="option-subtitle">How do you want to receive it?</span>
+          </div>
+          <div class="delivery-options">
+            <label class="delivery-option selected" data-val="pickup">
+              <input type="radio" name="delivery" value="pickup" checked />
+              <div class="delivery-icon">🤝</div>
+              <div>
+                <span class="delivery-name">Local Pickup</span>
+                <span class="delivery-desc">We'll coordinate a meetup spot</span>
+              </div>
+            </label>
+            <label class="delivery-option" data-val="ship">
+              <input type="radio" name="delivery" value="ship" />
+              <div class="delivery-icon">📦</div>
+              <div>
+                <span class="delivery-name">Shipping</span>
+                <span class="delivery-desc">We'll quote shipping cost separately</span>
+              </div>
+            </label>
+            <label class="delivery-option" data-val="yeshiva">
+              <input type="radio" name="delivery" value="yeshiva" />
+              <div class="delivery-icon">🏫</div>
+              <div>
+                <span class="delivery-name">Yeshiva Drop-Off</span>
+                <span class="delivery-desc">If you're in the yeshiva — easiest option</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: FORM + SUMMARY -->
+      <div class="order-right">
+
+        <!-- LIVE SUMMARY -->
+        <div class="order-summary" id="orderSummary">
+          <span class="summary-label">Order Summary</span>
+          <div class="summary-row">
+            <span>The Original Jack's</span>
+            <span id="sumQty">× 1</span>
+          </div>
+          <div class="summary-row">
+            <span>Price per bag</span>
+            <span id="sumPerBag">$14</span>
+          </div>
+          <div class="summary-addons" id="sumAddons"></div>
+          <div class="summary-divider"></div>
+          <div class="summary-total-row">
+            <span>Estimated Total</span>
+            <span id="totalPrice">$14</span>
+          </div>
+          <p class="summary-note">Final total confirmed when we reach out.</p>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div class="contact-form-wrap">
+          <div class="option-block-header" style="margin-bottom:1.25rem">
+            <span class="option-title">Your Info</span>
+            <span class="option-subtitle">We'll reach out to confirm and arrange payment</span>
+          </div>
+
+          <form class="form-fields" id="orderForm">
+
+            <div class="field-group">
+              <label for="fname">Full Name <span class="required">*</span></label>
+              <input type="text" id="fname" placeholder="Your full name" required />
+            </div>
+
+            <div class="field-group">
+              <label for="fphone">Phone / WhatsApp <span class="required">*</span></label>
+              <input type="tel" id="fphone" placeholder="+1 (000) 000-0000" required />
+            </div>
+
+            <div class="field-group">
+              <label for="femail">Email Address</label>
+              <input type="email" id="femail" placeholder="your@email.com" />
+            </div>
+
+            <div class="field-row">
+              <div class="field-group">
+                <label for="fcity">City</label>
+                <input type="text" id="fcity" placeholder="Your city" />
+              </div>
+              <div class="field-group">
+                <label for="fzip">ZIP Code</label>
+                <input type="text" id="fzip" placeholder="00000" />
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="fhear">How did you hear about us?</label>
+              <select id="fhear">
+                <option value="" disabled selected>Select one</option>
+                <option>Friend or family</option>
+                <option>Yeshiva / school</option>
+                <option>Social media</option>
+                <option>Word of mouth</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="foccasion">What's this for? (optional)</label>
+              <select id="foccasion">
+                <option value="" disabled selected>Select one</option>
+                <option>Just for me</option>
+                <option>Shabbos / Yom Tov</option>
+                <option>Gift</option>
+                <option>Event / party</option>
+                <option>Mishloach manos</option>
+                <option>Stocking up</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="fnotes">Notes / Special Requests (optional)</label>
+              <textarea id="fnotes" rows="3" placeholder="Allergies, delivery instructions, note card message, anything else..."></textarea>
+            </div>
+
+            <button class="btn btn-primary submit-btn" id="submitBtn" type="submit">
+              Send Order Request →
+            </button>
+
+            <p class="form-note">We typically respond within a few hours. Payment arranged after confirmation.</p>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SUCCESS OVERLAY -->
+  <div class="success-overlay" id="successOverlay" hidden>
+    <div class="success-card">
+      <img src="../logo.png" alt="Jack's Jerky" />
+      <h2>Order Request Sent!</h2>
+      <p>We got it. Expect a message within a few hours to confirm your order and sort out delivery and payment.</p>
+      <div class="success-detail" id="successDetail"></div>
+      <a href="../home/index.html" class="btn btn-primary" style="width:100%;text-align:center">Back to Home</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="../logo.png" alt="Jack's Jerky" />
+      <span>Jack's Jerky</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="../home/index.html">Home</a></li>
+      <li><a href="../about/index.html">About</a></li>
+      <li><a href="../flavors/index.html">Flavors</a></li>
+      <li><a href="index.html">Order</a></li>
+    </ul>
+    <p>© 2025 Jack's Jerky. All rights reserved. · Certified Kosher</p>
+  </footer>
+
+  <script src="../global.js"></script>
+  <script src="order.js"></script>
+</body>
+</html>
