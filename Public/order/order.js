@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const sumPerBag = document.getElementById("sumPerBag");
   const sumAddons = document.getElementById("sumAddons");
   const totalPrice = document.getElementById("totalPrice");
-  const orderSummary = document.getElementById("orderSummary");
   const orderForm = document.getElementById("orderForm");
   const successOverlay = document.getElementById("successOverlay");
   const successDetail = document.getElementById("successDetail");
@@ -62,18 +61,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getOrderTotalText(quantity, pricing, addonTotal) {
-    if (pricing.price === null) {
-      return addonTotal > 0 ? `Wholesale quote + $${addonTotal} add-ons` : "Wholesale quote";
-    }
-
     return `$${pricing.price * quantity + addonTotal}`;
   }
 
   const pricingTiers = [
-    { min: 1, max: 4, price: 14, label: "$14 / bag" },
-    { min: 5, max: 9, price: 12, label: "$12 / bag" },
-    { min: 10, max: 19, price: 10, label: "$10 / bag" },
-    { min: 20, max: Number.POSITIVE_INFINITY, price: null, label: "Wholesale quote" },
+    { min: 1, max: Number.POSITIVE_INFINITY, price: 10, label: "$10 / bag" },
   ];
 
   function getQuantity() {
@@ -231,22 +223,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const pricing = getPricing(quantity);
     const selectedAddons = getSelectedAddons();
     const addonTotal = getAddonTotal();
-    const isWholesale = pricing.price === null;
-
     updateTierState(quantity);
     renderAddons(selectedAddons);
 
     sumQty.textContent = `× ${quantity}`;
-    priceDisplay.textContent = pricing.price === null ? "Quote" : `$${pricing.price}`;
+    priceDisplay.textContent = `$${pricing.price}`;
     sumPerBag.textContent = pricing.label;
-
-    if (isWholesale) {
-      totalPrice.textContent = `Quote + $${addonTotal}`;
-    } else {
-      totalPrice.textContent = `$${pricing.price * quantity + addonTotal}`;
-    }
-
-    orderSummary.classList.toggle("is-wholesale", isWholesale);
+    totalPrice.textContent = `$${pricing.price * quantity + addonTotal}`;
   }
 
   qtyDec?.addEventListener("click", () => setQuantity(getQuantity() - 1));
@@ -310,7 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const deliveryLabel = getDeliveryLabel();
     const isShipping = getDeliveryValue() === "ship";
     const totalText = getOrderTotalText(quantity, pricing, addonTotal);
-    const itemSubtotal = pricing.price === null ? "Wholesale quote" : `$${pricing.price * quantity}`;
+    const itemSubtotal = `$${pricing.price * quantity}`;
     const addressParts = [getFieldValue("faddress"), getFieldValue("fcity"), getFieldValue("fstate"), getFieldValue("fzip")].filter(Boolean);
 
     const orderData = {
