@@ -84,22 +84,22 @@
             <span class="option-subtitle">The more you order, the better the deal</span>
           </div>
           <div class="bulk-tiers">
-            <div class="tier" data-qty="1">
+            <div class="tier" data-qty="1" role="button" tabindex="0" aria-label="Select 1 bag at $14 per bag">
               <div class="tier-qty">1–4 bags</div>
               <div class="tier-price">$14 / bag</div>
               <div class="tier-label">Standard</div>
             </div>
-            <div class="tier" data-qty="5">
+            <div class="tier" data-qty="5" role="button" tabindex="0" aria-label="Select 5 bags at $12 per bag">
               <div class="tier-qty">5–9 bags</div>
               <div class="tier-price">$12 / bag</div>
               <div class="tier-label">Saver</div>
             </div>
-            <div class="tier featured" data-qty="10">
+            <div class="tier featured" data-qty="10" role="button" tabindex="0" aria-label="Select 10 bags at $10 per bag">
               <div class="tier-qty">10–19 bags</div>
               <div class="tier-price">$10 / bag</div>
               <div class="tier-label">🔥 Best Value</div>
             </div>
-            <div class="tier" data-qty="20">
+            <div class="tier" data-qty="20" role="button" tabindex="0" aria-label="Select 20 bags for a wholesale quote">
               <div class="tier-qty">20+ bags</div>
               <div class="tier-price">Ask us</div>
               <div class="tier-label">Wholesale</div>
@@ -216,37 +216,51 @@
             <span class="option-subtitle">We'll reach out to confirm and arrange payment</span>
           </div>
 
-          <form class="form-fields" id="orderForm">
+          <form class="form-fields" id="orderForm" novalidate>
+
+            <div class="form-trap" aria-hidden="true">
+              <label for="fwebsite">Website</label>
+              <input type="text" id="fwebsite" name="website" tabindex="-1" autocomplete="off" />
+            </div>
 
             <div class="field-group">
               <label for="fname">Full Name <span class="required">*</span></label>
-              <input type="text" id="fname" placeholder="Your full name" required />
+              <input type="text" id="fname" name="customer_name" placeholder="Your full name" autocomplete="name" required />
             </div>
 
             <div class="field-group">
               <label for="fphone">Phone / WhatsApp <span class="required">*</span></label>
-              <input type="tel" id="fphone" placeholder="+1 (000) 000-0000" required />
+              <input type="tel" id="fphone" name="customer_phone" placeholder="+1 (000) 000-0000" autocomplete="tel" inputmode="tel" required />
             </div>
 
             <div class="field-group">
               <label for="femail">Email Address</label>
-              <input type="email" id="femail" placeholder="your@email.com" />
+              <input type="email" id="femail" name="customer_email" placeholder="your@email.com" autocomplete="email" />
+            </div>
+
+            <div class="field-group shipping-field" id="shippingAddressField" hidden>
+              <label for="faddress">Shipping Address <span class="required">*</span></label>
+              <input type="text" id="faddress" name="shipping_address" placeholder="Street address and apartment/unit" autocomplete="street-address" />
             </div>
 
             <div class="field-row">
               <div class="field-group">
-                <label for="fcity">City</label>
-                <input type="text" id="fcity" placeholder="Your city" />
+                <label for="fcity">City <span class="required shipping-required" hidden>*</span></label>
+                <input type="text" id="fcity" name="city" placeholder="Your city" autocomplete="address-level2" />
+              </div>
+              <div class="field-group shipping-field" id="shippingStateField" hidden>
+                <label for="fstate">State <span class="required">*</span></label>
+                <input type="text" id="fstate" name="state" placeholder="State" autocomplete="address-level1" />
               </div>
               <div class="field-group">
-                <label for="fzip">ZIP Code</label>
-                <input type="text" id="fzip" placeholder="00000" />
+                <label for="fzip">ZIP Code <span class="required shipping-required" hidden>*</span></label>
+                <input type="text" id="fzip" name="zip_code" placeholder="00000" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" title="Enter a 5-digit ZIP code (or ZIP+4)" />
               </div>
             </div>
 
             <div class="field-group">
               <label for="fhear">How did you hear about us?</label>
-              <select id="fhear">
+              <select id="fhear" name="referral_source">
                 <option value="" disabled selected>Select one</option>
                 <option>Friend or family</option>
                 <option>Yeshiva / school</option>
@@ -258,7 +272,7 @@
 
             <div class="field-group">
               <label for="foccasion">What's this for? (optional)</label>
-              <select id="foccasion">
+              <select id="foccasion" name="occasion">
                 <option value="" disabled selected>Select one</option>
                 <option>Just for me</option>
                 <option>Shabbos / Yom Tov</option>
@@ -272,7 +286,7 @@
 
             <div class="field-group">
               <label for="fnotes">Notes / Special Requests (optional)</label>
-              <textarea id="fnotes" rows="3" placeholder="Allergies, delivery instructions, note card message, anything else..."></textarea>
+              <textarea id="fnotes" name="customer_notes" rows="3" placeholder="Allergies, delivery instructions, note card message, anything else..."></textarea>
             </div>
 
             <button class="btn btn-primary submit-btn" id="submitBtn" type="submit">
@@ -280,6 +294,7 @@
             </button>
 
             <p class="form-note">We typically respond within a few hours. Payment arranged after confirmation.</p>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
 
           </form>
         </div>
